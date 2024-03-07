@@ -155,6 +155,9 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   SpawnObject: {fileID: 8331317898322341916}
   arCam: {fileID: 772719890}
+  CameraTransform: {fileID: 772719895}
+  distance: 0.4
+  turnOff: 0
 --- !u!4 &161051559
 Transform:
   m_ObjectHideFlags: 0
@@ -401,6 +404,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &465490820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465490822}
+  - component: {fileID: 465490823}
+  - component: {fileID: 465490821}
+  m_Layer: 0
+  m_Name: TouchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &465490821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465490820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51e504cccb13a04ea173963eb3f79cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &465490822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465490820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.137757, y: 2.2191978, z: 4.916922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465490823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465490820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 5fd9b065a76ad90479da47f8af8ff682,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Touch
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &471270897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 8766024634595469697, guid: 8f2c1ffdafd49a943ac79dc0ff480220,
         type: 3}
       propertyPath: m_TagString
-      value: AR Camera
+      value: MainCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1079,6 +1158,12 @@ PrefabInstance:
 --- !u!20 &772719890 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8766024634595469703, guid: 8f2c1ffdafd49a943ac79dc0ff480220,
+    type: 3}
+  m_PrefabInstance: {fileID: 772719889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &772719895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8766024634595469698, guid: 8f2c1ffdafd49a943ac79dc0ff480220,
     type: 3}
   m_PrefabInstance: {fileID: 772719889}
   m_PrefabAsset: {fileID: 0}
@@ -3633,3 +3718,4 @@ SceneRoots:
   - {fileID: 8469312022538516844}
   - {fileID: 246718614}
   - {fileID: 161051559}
+  - {fileID: 465490822}
