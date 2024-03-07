@@ -3767,6 +3767,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basketball
       objectReference: {fileID: 0}
+    - target: {fileID: 2504732821413964522, guid: 150f68a7b97b61c47b2df912cd25ac2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trails
+      objectReference: {fileID: 0}
     - target: {fileID: 2873199778472199741, guid: 150f68a7b97b61c47b2df912cd25ac2f,
         type: 3}
       propertyPath: arCam

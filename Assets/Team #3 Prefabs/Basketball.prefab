@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 279887533279326263}
   - component: {fileID: 7412936702086168198}
   - component: {fileID: 2873199778472199741}
+  - component: {fileID: 383673208491838381}
   m_Layer: 0
   m_Name: Basketball
   m_TagString: Basketball
@@ -34,8 +35,7 @@ Transform:
   m_LocalPosition: {x: 0.003, y: -0.2779, z: -0.3287}
   m_LocalScale: {x: 5.0770874, y: 5.0770874, z: 5.0770874}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2854924583758393576}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &937477242684337027
@@ -159,6 +159,7 @@ MonoBehaviour:
   turnOff: 0
   Speed: 4
   BallExpired: 5
+  Trail: {fileID: 0}
 --- !u!114 &2873199778472199741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,46 +179,14 @@ MonoBehaviour:
   distance: 0.4
   turnOff: 0
   Speed: 4
---- !u!1 &2504732821413964522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2854924583758393576}
-  - component: {fileID: 6723803829845900748}
-  m_Layer: 0
-  m_Name: Trail
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2854924583758393576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504732821413964522}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0001, y: -0.0017, z: -0.0023}
-  m_LocalScale: {x: 0.020004654, y: 0.020004654, z: 0.020004654}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 365173856910894969}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &6723803829845900748
+--- !u!96 &383673208491838381
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504732821413964522}
+  m_GameObject: {fileID: 1591927992523626144}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
