@@ -26,35 +26,43 @@ public class SpawnModel : MonoBehaviour
         arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
         ballCollider = SpawnObject.GetComponent<SphereCollider>();
         BallRigid = SpawnObject.GetComponent<Rigidbody>();
-        ballCollider.enabled = false;
-        BallRigid.isKinematic = true;
+        //ballCollider.enabled = false;
+        //BallRigid.isKinematic = true;
+        DisableBall(false, true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Calling function, allowing ball to keep moving around until the screen is touch
+        //Later will input if the user did not throw, the ball will return back to original 
+        //position, then they are allow to throw the ball again
         UpdatePosition(turnOff);
         if (Input.touchCount > 0)
         {
+            Touch touch = Input.GetTouch(0); // Get the first touch since count touch
             turnOff = true;
-            ballCollider.enabled = false;
-            BallRigid.isKinematic = true;
+           // ballCollider.enabled = false;
+           // BallRigid.isKinematic = true;
+            DisableBall(false, true);
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Moved)
+            if (touch.phase == TouchPhase.Statinoary ||  touch.phase == TouchPhase.Moved)
             {
-                Vector2 pos = touch.position;
-                pos.x = (pos.x - width) / width;
-                pos.y = (pos.y - height) / height;
-                position = new Vector3(pos.x / 2, pos.y / 2, position.z * distance);
+                //Vector2 pos = touch.position;
+                //pos.x = (pos.x - width) / width;
+                //pos.y = (pos.y - height) / height;
+                //position = new Vector3(pos.x / 2, pos.y / 2, position.z * distance);
 
                 // position the spawn object
-                SpawnObject.transform.position = position;
+                //SpawnObject.transform.position = position;
+                MovedObject(touch);
             }
             if (touch.phase == TouchPhase.Ended)
             {
-                ballCollider.enabled = true;
-                BallRigid.isKinematic = false;
+                DisableBall(true, false);
+               // ballCollider.enabled = true;
+               // BallRigid.isKinematic = false;
             }
             if (Input.touchCount == 2)
             {
@@ -76,6 +84,7 @@ public class SpawnModel : MonoBehaviour
         }
     }
 
+    //Update position of the ball, allowing the ball to move around base on position of camera.
     void UpdatePosition(bool TurnOff)
     {
         int check = 0;
@@ -92,5 +101,25 @@ public class SpawnModel : MonoBehaviour
             Debug.Log("No longer connected to screen!!");
             check++;
         }
+    }
+
+    // Code that allow moving the main object in front of the camera.
+    void MoveObject(Touch Temp)
+    {
+        Vector3 touchedPos = arCam.main.ScreenToWorldPoint(new Vector3(Temp.position.x,
+            Temp.position.y, 10));
+        //SpawnObject.transform.position = Vector3.lerp(SpawnObject.transform.position,
+        // touchedPos, Time.deltaTime);
+        //position = new Vector3(pos.x / 2, pos.y / 2, position.z * distance);
+        SpawnObject.transform.position = Vector3.lerp(new Vector3(SpawnObject.transform.position.x,
+            SpawnObject.transform.y, position.z * distance),
+    touchedPos, Time.deltaTime);
+    }
+    
+    //Disable ball of collider and rigid body
+    void DisableBall(bool temp1, bool temp2)
+    {
+        ballCollider.enabled = temp1;
+        BallRigid.isKinematic = temp2;
     }
 }
