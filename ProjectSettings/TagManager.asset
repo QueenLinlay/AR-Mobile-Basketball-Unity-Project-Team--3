@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Basketball
   - Hoop
+  - AR Camera
   layers:
   - Default
   - TransparentFX

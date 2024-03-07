@@ -45,9 +45,8 @@ public class SpawnModel : MonoBehaviour
            // ballCollider.enabled = false;
            // BallRigid.isKinematic = true;
             DisableBall(false, true);
-            Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Statinoary ||  touch.phase == TouchPhase.Moved)
+            if (touch.phase == TouchPhase.Stationary ||  touch.phase == TouchPhase.Moved)
             {
                 //Vector2 pos = touch.position;
                 //pos.x = (pos.x - width) / width;
@@ -56,7 +55,7 @@ public class SpawnModel : MonoBehaviour
 
                 // position the spawn object
                 //SpawnObject.transform.position = position;
-                MovedObject(touch);
+                MoveObject(touch);
             }
             if (touch.phase == TouchPhase.Ended)
             {
@@ -106,16 +105,23 @@ public class SpawnModel : MonoBehaviour
     // Code that allow moving the main object in front of the camera.
     void MoveObject(Touch Temp)
     {
-        Vector3 touchedPos = arCam.main.ScreenToWorldPoint(new Vector3(Temp.position.x,
-            Temp.position.y, 10));
+        //Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(Temp.position.x,
+          //  Temp.position.y, position.z * distance));
         //SpawnObject.transform.position = Vector3.lerp(SpawnObject.transform.position,
         // touchedPos, Time.deltaTime);
         //position = new Vector3(pos.x / 2, pos.y / 2, position.z * distance);
-        SpawnObject.transform.position = Vector3.lerp(new Vector3(SpawnObject.transform.position.x,
-            SpawnObject.transform.y, position.z * distance),
-    touchedPos, Time.deltaTime);
+        Vector2 pos = Temp.position;
+        pos.x = (pos.x - width) / width;
+        pos.y = (pos.y - height) / height;
+        position = new Vector3(pos.x / 4, pos.y / 4, position.z * distance);
+
+        SpawnObject.transform.position = Vector3.Lerp(SpawnObject.transform.position,
+         position, Time.deltaTime * 2);
+        //SpawnObject.transform.position = Vector3.Lerp(new Vector3(SpawnObject.transform.position.x,
+        //  SpawnObject.transform.position.y, position.z * distance),
+        //touchedPos, Time.deltaTime);
     }
-    
+
     //Disable ball of collider and rigid body
     void DisableBall(bool temp1, bool temp2)
     {

@@ -1062,6 +1062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8766024634595469697, guid: 8f2c1ffdafd49a943ac79dc0ff480220,
+        type: 3}
+      propertyPath: m_TagString
+      value: AR Camera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
