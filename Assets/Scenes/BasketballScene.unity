@@ -3537,7 +3537,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b0ea5a53b96ed246921c3560a761f34, type: 2}
+  - {fileID: 2100000, guid: e2952fdf816a86f41b774fb293665731, type: 2}
   - {fileID: 5242587442994317925, guid: 82a35da1dafa18947a69947df80b06c8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3614,7 +3614,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2952fdf816a86f41b774fb293665731, type: 2}
+  - {fileID: 2100000, guid: 5b0ea5a53b96ed246921c3560a761f34, type: 2}
   - {fileID: -1243342898494058750, guid: 82a35da1dafa18947a69947df80b06c8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3640,6 +3640,12 @@ MeshRenderer:
 --- !u!1 &4539263274368720660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1591927992523626144, guid: 150f68a7b97b61c47b2df912cd25ac2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5840707468461385755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &4539263274368720661 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 383673208491838381, guid: 150f68a7b97b61c47b2df912cd25ac2f,
     type: 3}
   m_PrefabInstance: {fileID: 5840707468461385755}
   m_PrefabAsset: {fileID: 0}
@@ -3782,6 +3788,11 @@ PrefabInstance:
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 772719895}
+    - target: {fileID: 7412936702086168198, guid: 150f68a7b97b61c47b2df912cd25ac2f,
+        type: 3}
+      propertyPath: Trail
+      value: 
+      objectReference: {fileID: 4539263274368720661}
     - target: {fileID: 7412936702086168198, guid: 150f68a7b97b61c47b2df912cd25ac2f,
         type: 3}
       propertyPath: arCam

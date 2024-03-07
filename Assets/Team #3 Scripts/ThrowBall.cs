@@ -34,7 +34,7 @@ public class ThrowBall : MonoBehaviour
     public float BallExpired = 5f;
 
     SphereCollider ballCollider;
-    public TrailRenderer Trail;
+    //public TrailRenderer Trail;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class ThrowBall : MonoBehaviour
         arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
         CameraTransform = arCam.transform; 
         position = (CameraTransform.position + CameraTransform.forward * distance);
-        Trail = GetComponent<TrailRenderer>();
+       // Trail = GetComponent<TrailRenderer>();
         DisableBall(false, true);
     }
 
@@ -53,14 +53,14 @@ public class ThrowBall : MonoBehaviour
     {
 
         UpdatePosition(turnOff);
-        Trail.enabled = false;
+        //Trail.enabled = false;
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
 
             Touch touch = Input.GetTouch(0);
             turnOff = true;
             DisableBall(false, true);
-            Trail.enabled = true;
+           // Trail.enabled = true;
             // Geting touch position and working time when you touch the screen
             touchTimeStart = Time.time;
             startPos = Input.GetTouch(0).position;
