@@ -3,76 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class SpawnModel : MonoBehaviour
+// Reference:
+// https://www.youtube.com/watch?v=7O9bAFyGvH8
+// https://discussions.unity.com/t/unity-touch-controls-accurate-finger-following/108726/2
+// https://discussions.unity.com/t/how-to-make-an-object-follow-the-camera-orientation/201498/2
+
+public class ThrowBall : MonoBehaviour
 {
+    Vector2 startPos, endPos, direction;
+    float touchTimeStart, touchTimeFinish, timeInterval;
+
+    [SerializeField]
+    float throwForceInXandY = 1;
+
+    [SerializeField]
+    float throwForceInZ = 50f;
+
+    Rigidbody rb;
+
     [SerializeField]
     private Vector3 position;
-    private float width;
-    private float height;
-    public GameObject SpawnObject;
+    //public GameObject SpawnObject;
     public Camera arCam;
     public Transform CameraTransform;
     public float distance;
     public bool turnOff = false;
-    SphereCollider ballCollider;
 
     [SerializeField]
-    float Speed = 0;
-    Rigidbody BallRigid;
+    public float Speed = 0;
+    public float BallExpired = 5f;
 
+    SphereCollider ballCollider;
     // Start is called before the first frame update
     void Start()
     {
-        width = (float)Screen.width / 2 ;
-        height = (float)Screen.height / 2;
-
-        position = (CameraTransform.position + CameraTransform.forward * distance);
+        ballCollider = GetComponent<SphereCollider>();
+        rb = GetComponent<Rigidbody>();
         arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
-        ballCollider = SpawnObject.GetComponent<SphereCollider>();
-        BallRigid = SpawnObject.GetComponent<Rigidbody>();
+        CameraTransform = arCam.transform; 
+        position = (CameraTransform.position + CameraTransform.forward * distance);
+
         DisableBall(false, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Calling function, allowing ball to keep moving around until the screen is touch
-        //Later will input if the user did not throw, the ball will return back to original 
-        //position, then they are allow to throw the ball again
+
         UpdatePosition(turnOff);
-        if (Input.touchCount > 0)
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Touch touch = Input.GetTouch(0); // Get the first touch since count touch
+            Touch touch = Input.GetTouch(0);
             turnOff = true;
             DisableBall(false, true);
+            // Geting touch position and working time when you touch the screen
+            touchTimeStart = Time.time;
+            startPos = Input.GetTouch(0).position;
 
-            if (touch.phase == TouchPhase.Stationary ||  touch.phase == TouchPhase.Moved)
+            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Ended) 
             {
                 MoveObject(touch);
             }
-            if (touch.phase == TouchPhase.Ended)
-            {
-                DisableBall(true, false);
-               // ballCollider.enabled = true;
-               // BallRigid.isKinematic = false;
-            }
-            if (Input.touchCount == 2)
-            {
-                touch = Input.GetTouch(1);
-                
-                if (touch.phase == TouchPhase.Began)
-                {
-                    // Halve the size of the cube
-                    SpawnObject.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-                }
-                
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    // Restore the regular size of the cube
-                    SpawnObject.transform.localScale = new Vector3(5.077087f, 5.077087f, 5.077087f);
-                }
-            }
 
+        }
+
+        //if you release your finger)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+
+            touchTimeFinish = Time.time;
+
+            timeInterval = touchTimeFinish - touchTimeStart;
+
+            endPos = Input.GetTouch(0).position;
+
+            direction = startPos - endPos;
+
+            DisableBall(true, false);
+            rb.AddForce(-direction.x * throwForceInXandY, -direction.y *
+                throwForceInXandY, throwForceInZ / timeInterval);
+
+            Destroy(gameObject, BallExpired);
         }
     }
 
@@ -85,7 +97,7 @@ public class SpawnModel : MonoBehaviour
 
             // Update position of ball if camera is moving
             position = (CameraTransform.position + CameraTransform.forward * distance);
-            SpawnObject.transform.position = position;
+            transform.position = position;
         }
         else if (turnOff == true & check == 0)
         {
@@ -102,7 +114,7 @@ public class SpawnModel : MonoBehaviour
         Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(Temp.position.x,
             Temp.position.y, GetCameraZPosition()));
 
-        SpawnObject.transform.position = Vector3.Lerp(SpawnObject.transform.position,
+        transform.position = Vector3.Lerp(transform.position,
          touchedPos, Time.deltaTime * Speed);
     }
 
@@ -110,7 +122,7 @@ public class SpawnModel : MonoBehaviour
     void DisableBall(bool temp1, bool temp2)
     {
         ballCollider.enabled = temp1;
-        BallRigid.isKinematic = temp2;
+        rb.isKinematic = temp2;
     }
 
     //Get the new position of Camera, to make sure the Z position is base on the Camera Position. 
