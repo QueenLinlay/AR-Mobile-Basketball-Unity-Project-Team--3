@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6698372783236253510}
   - component: {fileID: 1467784611988018472}
   - component: {fileID: 279887533279326263}
-  - component: {fileID: 7412936702086168198}
   - component: {fileID: 2873199778472199741}
   - component: {fileID: 383673208491838381}
+  - component: {fileID: 8489258836663925534}
   m_Layer: 0
   m_Name: Basketball
   m_TagString: Basketball
@@ -134,31 +134,10 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.009802796
   m_Center: {x: 0.0000000027939677, y: 0.0000002370216, z: 0}
---- !u!114 &7412936702086168198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591927992523626144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bdb029d697b37543ab604893dd7e3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwForceInXandY: 0.5
-  throwForceInZ: 10
-  position: {x: 0, y: 0, z: 0}
-  arCam: {fileID: 0}
-  CameraTransform: {fileID: 0}
-  distance: 0.4
-  turnOff: 0
-  Speed: 4
-  BallExpired: 5
 --- !u!114 &2873199778472199741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,3 +262,29 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8489258836663925534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591927992523626144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdb029d697b37543ab604893dd7e3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  endPos: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  throwForceInXandY: 0.3
+  throwForceInZ: 20
+  position: {x: 0, y: 0, z: 0}
+  arCam: {fileID: 0}
+  CameraTransform: {fileID: 0}
+  distance: 0.5
+  turnOff: 0
+  Speed: 0.001
+  BallExpired: 5
+  spawn: {fileID: 0}
+  Holder: {fileID: 0}

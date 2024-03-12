@@ -101,7 +101,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             foreach (var trackedImage in eventArgs.added)
             {
                 // Give the initial image a reasonable default scale
-                trackedImage.transform.localScale = new Vector3(0.01f, 1f, 0.01f);
+                trackedImage.transform.localScale = new Vector3(1.0f, 1f, 1.0f);
 
                 UpdateInfo(trackedImage);
             }
