@@ -8,8 +8,10 @@ using UnityEngine.XR.ARFoundation;
 // https://discussions.unity.com/t/unity-touch-controls-accurate-finger-following/108726/2
 // https://discussions.unity.com/t/how-to-make-an-object-follow-the-camera-orientation/201498/2
 
+
 public class ThrowBall : MonoBehaviour
 {
+    [SerializeField]
     Vector2 startPos, endPos, direction;
     float touchTimeStart, touchTimeFinish, timeInterval;
 
@@ -21,6 +23,8 @@ public class ThrowBall : MonoBehaviour
 
     Rigidbody rb;
 
+    //public GameObject ball;
+
     [SerializeField]
     private Vector3 position;
     //public GameObject SpawnObject;
@@ -31,10 +35,17 @@ public class ThrowBall : MonoBehaviour
 
     [SerializeField]
     public float Speed = 0;
+    // Create base on time of 60 x seconds;
     public float BallExpired = 5f;
 
     SphereCollider ballCollider;
+
+    public SpawnBall spawn;
+    public GameObject Holder;
+    //public TrailRenderer Trail;
+
     // Start is called before the first frame update
+
     void Start()
     {
         ballCollider = GetComponent<SphereCollider>();
@@ -42,21 +53,25 @@ public class ThrowBall : MonoBehaviour
         arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
         CameraTransform = arCam.transform; 
         position = (CameraTransform.position + CameraTransform.forward * distance);
-
+        Holder = GameObject.FindWithTag("SpawnBall");
+        spawn = Holder.GetComponent<SpawnBall>();
+       // ball = GameObject.FindWithTag("Basketball").GetComponent<GameObject>();
+        // Trail = GetComponent<TrailRenderer>();
         DisableBall(false, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         UpdatePosition(turnOff);
-
+        //Trail.enabled = false;
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
+
             Touch touch = Input.GetTouch(0);
             turnOff = true;
             DisableBall(false, true);
+           // Trail.enabled = true;
             // Geting touch position and working time when you touch the screen
             touchTimeStart = Time.time;
             startPos = Input.GetTouch(0).position;
@@ -71,7 +86,6 @@ public class ThrowBall : MonoBehaviour
         //if you release your finger)
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-
             touchTimeFinish = Time.time;
 
             timeInterval = touchTimeFinish - touchTimeStart;
@@ -84,7 +98,9 @@ public class ThrowBall : MonoBehaviour
             rb.AddForce(-direction.x * throwForceInXandY, -direction.y *
                 throwForceInXandY, throwForceInZ / timeInterval);
 
+            spawn.Check = true;
             Destroy(gameObject, BallExpired);
+            
         }
     }
 
@@ -134,4 +150,25 @@ public class ThrowBall : MonoBehaviour
         Temp = -position.z;
         return Temp;
     }
+
+    bool TimerDone()
+    {
+       float temp = 0.0f;
+
+        while (temp <= BallExpired * 60)
+        {
+            temp += Time.deltaTime;
+        }
+        if (temp >= BallExpired)
+        {
+            Debug.Log("Yay");
+            temp = 0.0f;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Nooo!!");
+            return false;
+        }
+    } 
 }

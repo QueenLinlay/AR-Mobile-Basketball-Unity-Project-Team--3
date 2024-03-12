@@ -7,6 +7,9 @@ TagManager:
   - Basketball
   - Hoop
   - AR Camera
+  - Trails
+  - SpawnBall
+  - SpawnBalls
   layers:
   - Default
   - TransparentFX
