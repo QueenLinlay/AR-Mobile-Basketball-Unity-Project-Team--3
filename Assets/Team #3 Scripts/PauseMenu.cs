@@ -1,14 +1,9 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
-using Debug = UnityEngine.Debug;
-using Vector3 = UnityEngine.Vector3;
-
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject PauseMenuCanvas;
+    public GameObject pauseMenuCanvas;
     public InputField playerNameInput;
 
     private bool isPaused = false;
@@ -16,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         // Hide the pause menu canvas initially
-        PauseMenuCanvas.SetActive(false);
+        pauseMenuCanvas.SetActive(false);
     }
 
     void Update()
@@ -42,7 +37,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
 
         // Show the pause menu canvas
-        PauseMenuCanvas.SetActive(true);
+        pauseMenuCanvas.SetActive(true);
     }
 
     public void ResumeGame()
@@ -52,20 +47,20 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 
         // Hide the pause menu canvas
-        PauseMenuCanvas.SetActive(false);
+        pauseMenuCanvas.SetActive(false);
     }
 
     public void QuitGame()
     {
-        Application.Quit();
+        // Quit the application (for development purposes)
+        UnityEngine.Application.Quit(); // Specify UnityEngine.Application
     }
 
     public void StartGame()
     {
         // Here you would start the game and pass the player's name to the game manager or another script
         string playerName = playerNameInput.text;
-        Debug.Log("Starting game with player name: " + playerName);
-
+        UnityEngine.Debug.Log("Starting game with player name: " + playerName); // Specify UnityEngine.Debug
         // Resume the game
         ResumeGame();
     }
