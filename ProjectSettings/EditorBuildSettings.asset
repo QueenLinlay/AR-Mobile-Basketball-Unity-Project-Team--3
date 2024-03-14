@@ -183,6 +183,8 @@ EditorBuildSettings:
     path: Assets/Scenes/BasketballScene.unity
     guid: 945ac01bb098f7c4e8c9b344a89f72ed
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 96044803985d4af4688528d77032a8e9,
+      type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: c52d3bb36b4c86f47af54ab9c7a02589,
       type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f8ce26fe3bc69499b9be4b2378e97a94,
