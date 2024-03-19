@@ -3164,7 +3164,7 @@ MonoBehaviour:
   RewardBall: {fileID: 8116532879385044809, guid: 5a358ddc3ee3e534aa0de530ca309764,
     type: 3}
   Deleteball: 3
-  LaunchSpeed: 450
+  LaunchSpeed: 310
   UpwardsSpeed: 2
 --- !u!222 &3719111813046347286
 CanvasRenderer:
@@ -4414,11 +4414,11 @@ Transform:
   m_GameObject: {fileID: 2467392916029306864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.48765907, y: 3.8796453, z: 11.310128}
-  m_LocalScale: {x: 0.4740609, y: 0.23650354, z: 0.5009943}
+  m_LocalPosition: {x: 0.08106, y: 0.49671003, z: 2.274}
+  m_LocalScale: {x: 0.07879968, y: 0.05045728, z: 0.08327662}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5363850818262058948}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &5198828300935223649
 CanvasRenderer:
@@ -4607,12 +4607,11 @@ Transform:
   m_GameObject: {fileID: 4142467388540402958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.331, z: 0.394}
+  m_LocalPosition: {x: 0.074, y: -0.37, z: 0.394}
   m_LocalScale: {x: 0.16622269, y: 0.21334682, z: 0.16622269}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7082084694451265288}
-  - {fileID: 5166131677356383767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5412491884897015248
@@ -4665,13 +4664,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116841813200473334}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.53, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7082084694451265288}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &5438819253204690674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6352,7 +6351,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5103633379953995079}
   m_Direction: 0
   m_Value: -0.000003590226
-  m_Size: 0.9852171
+  m_Size: 0.49260482
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9342,4 +9341,5 @@ SceneRoots:
   - {fileID: 543450652221274043}
   - {fileID: 1876300086}
   - {fileID: 4313571416956264135}
+  - {fileID: 5166131677356383767}
   - {fileID: 5363850818262058948}

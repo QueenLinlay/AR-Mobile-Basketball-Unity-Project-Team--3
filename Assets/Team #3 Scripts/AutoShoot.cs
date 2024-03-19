@@ -13,7 +13,7 @@ public class AutoShoot : MonoBehaviour
     public int Deleteball = 0;
     //public Transform ShootPosition;
     public float LaunchSpeed;
-    public float UpwardsSpeed;
+    public float UpwardsSpeed = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +44,8 @@ public class AutoShoot : MonoBehaviour
     void ShootBall()
     {
         GameObject ball = Instantiate(RewardBall, transform.position, transform.rotation);
-        ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(UpwardsSpeed, LaunchSpeed, 0));
+        //ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(UpwardsSpeed, LaunchSpeed, 0));
+        ball.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * LaunchSpeed);
         Destroy(ball, Deleteball);
     }
 }
