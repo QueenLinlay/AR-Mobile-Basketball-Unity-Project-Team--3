@@ -2121,7 +2121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.500122, y: -0.00018310547}
+  m_AnchoredPosition: {x: 8.500244, y: -0.00018310547}
   m_SizeDelta: {x: 1150, y: 679}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!4 &2062746794547604715
@@ -3164,7 +3164,7 @@ MonoBehaviour:
   RewardBall: {fileID: 8116532879385044809, guid: 5a358ddc3ee3e534aa0de530ca309764,
     type: 3}
   Deleteball: 3
-  LaunchSpeed: 310
+  LaunchSpeed: 315
   UpwardsSpeed: 2
 --- !u!222 &3719111813046347286
 CanvasRenderer:
@@ -4413,8 +4413,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467392916029306864}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08106, y: 0.49671003, z: 2.274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08106, y: 0.446, z: 2.283}
   m_LocalScale: {x: 0.07879968, y: 0.05045728, z: 0.08327662}
   m_ConstrainProportionsScale: 0
   m_Children: []
