@@ -32,11 +32,21 @@ public class ScoreForRewards : MonoBehaviour
     // When collider is enter (the ball that is shooting into the net) do something (can affect others collider
     private void OnCollisionEnter(Collision collision)
     {
-        //spawn.Check = false;
-        Destroy(collision.gameObject);
-        //Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
-        Score++;
-        ScoreText.text = Score.ToString();
-        Debug.Log(Score);
+        //Add this to main script later for the basketball
+        if (collision.gameObject.tag == "Basketball")
+        {
+            //spawn.Check = false;
+            Destroy(collision.gameObject);
+            //Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
+            Score++;
+            ScoreText.text = Score.ToString();
+            Debug.Log("Scored!! AI Failed to block");
+            //Debug.Log(Score);
+        }
+        else
+        {
+            Debug.Log("Other GameObject has collide with this... will not be destroy..");
+        }
+
     }
 }

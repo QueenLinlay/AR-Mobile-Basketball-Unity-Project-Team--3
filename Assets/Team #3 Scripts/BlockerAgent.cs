@@ -43,15 +43,43 @@ public class BlockerAgent : Agent
         sensor.AddObservation(rBody.velocity.z);
     }
 
-    public float forceMultiplier = 10;
+    public float forceMultiplier = 5f;
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Actions, size = 2
-        Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = actionBuffers.ContinuousActions[0];
-        controlSignal.y = actionBuffers.ContinuousActions[1];
-        controlSignal.z = actionBuffers.ContinuousActions[2];
-        rBody.AddForce(controlSignal * forceMultiplier);
+        //Vector3 controlSignal = Vector3.zero;
+        float moveX = actionBuffers.DiscreteActions[0];
+        //controlSignal.x = actionBuffers.ContinuousActions[0]; // 0 = don't move; 1 = left; 2 = right
+        float moveZ = actionBuffers.DiscreteActions[1];
+        //controlSignal.y = actionBuffers.ContinuousActions[1]; // 0 = dont move; 1 = back; 2 = forward
+        float moveY = actionBuffers.DiscreteActions[2];
+        //controlSignal.z = actionBuffers.ContinuousActions[2]; // 0 = dont move; 1 = down; 2 = up;
+        //rBody.AddForce(controlSignal * forceMultiplier);
+        Vector3 addForce = new Vector3(0, 0, 0);
+
+        switch (moveX)
+        {
+            case 0: addForce.x = 0f; break;
+            case 1: addForce.x = -0.5f; break;
+            case 2: addForce.x = +0.5f; break;
+        }
+
+        switch (moveZ)
+        {
+            case 0: addForce.z = 0f; break;
+            case 1: addForce.z = -0.5f; break;
+            case 2: addForce.z = +0.5f; break;
+        }
+
+        switch (moveY)
+        {
+            case 0: addForce.y = 0f; break;
+            case 1: addForce.y = -0.5f; break;
+            case 2: addForce.y = +0.5f; break;
+        }
+
+        //Speed
+        rBody.velocity = addForce * forceMultiplier;
 
         // Rewards
         float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
