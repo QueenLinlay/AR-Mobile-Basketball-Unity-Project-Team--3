@@ -18,15 +18,33 @@
                 "auxillary_file_paths": [
                     "results\\ppo\\BlockerBall\\BlockerBall-11536.pt"
                 ]
+            },
+            {
+                "steps": 13352,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-13352.onnx",
+                "reward": 0.0,
+                "creation_time": 1711059393.8826952,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-13352.pt"
+                ]
+            },
+            {
+                "steps": 16488,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-16488.onnx",
+                "reward": null,
+                "creation_time": 1711060251.46552,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-16488.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 11536,
+            "steps": 16488,
             "file_path": "results\\ppo\\BlockerBall.onnx",
             "reward": null,
-            "creation_time": 1711058674.1544685,
+            "creation_time": 1711060251.46552,
             "auxillary_file_paths": [
-                "results\\ppo\\BlockerBall\\BlockerBall-11536.pt"
+                "results\\ppo\\BlockerBall\\BlockerBall-16488.pt"
             ]
         }
     },

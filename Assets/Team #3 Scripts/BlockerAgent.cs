@@ -15,7 +15,7 @@ public class BlockerAgent : Agent
     {
         rBody = GetComponent<Rigidbody>();
 
-        transform.position = new Vector3(0.087f, -.0379f, 1.697f);
+        transform.position = new Vector3(2.23861051f, -1.62899995f, 1.52878571f);
     }
 
     public Transform Target;
@@ -26,7 +26,7 @@ public class BlockerAgent : Agent
         {
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+            this.transform.localPosition = new Vector3(2.23861051f, -1.62899995f, 1.52878571f);
         }
 
     }
