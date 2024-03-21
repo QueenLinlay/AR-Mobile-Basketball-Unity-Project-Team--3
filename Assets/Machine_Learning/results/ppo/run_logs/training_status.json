@@ -1,0 +1,38 @@
+{
+    "BlockerBall": {
+        "checkpoints": [
+            {
+                "steps": 10064,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-10064.onnx",
+                "reward": 0.0,
+                "creation_time": 1711058504.5553634,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-10064.pt"
+                ]
+            },
+            {
+                "steps": 11536,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-11536.onnx",
+                "reward": null,
+                "creation_time": 1711058674.1544685,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-11536.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11536,
+            "file_path": "results\\ppo\\BlockerBall.onnx",
+            "reward": null,
+            "creation_time": 1711058674.1544685,
+            "auxillary_file_paths": [
+                "results\\ppo\\BlockerBall\\BlockerBall-11536.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.1+cpu"
+    }
+}
