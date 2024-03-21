@@ -40,6 +40,7 @@ public class BlockerAgent : Agent
         //Agent velocity
         sensor.AddObservation(rBody.velocity.x);
         sensor.AddObservation(rBody.velocity.y);
+        sensor.AddObservation(rBody.velocity.z);
     }
 
     public float forceMultiplier = 10;
@@ -49,6 +50,7 @@ public class BlockerAgent : Agent
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = actionBuffers.ContinuousActions[0];
         controlSignal.y = actionBuffers.ContinuousActions[1];
+        controlSignal.z = actionBuffers.ContinuousActions[2];
         rBody.AddForce(controlSignal * forceMultiplier);
 
         // Rewards
