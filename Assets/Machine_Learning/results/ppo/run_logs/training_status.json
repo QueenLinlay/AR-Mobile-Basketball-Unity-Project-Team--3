@@ -2,58 +2,31 @@
     "BlockerBall": {
         "checkpoints": [
             {
-                "steps": 53992,
-                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-53992.onnx",
-                "reward": null,
-                "creation_time": 1711062872.3635614,
+                "steps": 499945,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-499945.onnx",
+                "reward": 0.8624999998137355,
+                "creation_time": 1711096377.2333338,
                 "auxillary_file_paths": [
-                    "results\\ppo\\BlockerBall\\BlockerBall-53992.pt"
+                    "results\\ppo\\BlockerBall\\BlockerBall-499945.pt"
                 ]
             },
             {
-                "steps": 78056,
-                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-78056.onnx",
-                "reward": null,
-                "creation_time": 1711063976.5007703,
+                "steps": 500009,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-500009.onnx",
+                "reward": 0.8624999998137355,
+                "creation_time": 1711096377.3327475,
                 "auxillary_file_paths": [
-                    "results\\ppo\\BlockerBall\\BlockerBall-78056.pt"
-                ]
-            },
-            {
-                "steps": 81337,
-                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-81337.onnx",
-                "reward": 0.0,
-                "creation_time": 1711064823.9839568,
-                "auxillary_file_paths": [
-                    "results\\ppo\\BlockerBall\\BlockerBall-81337.pt"
-                ]
-            },
-            {
-                "steps": 82873,
-                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-82873.onnx",
-                "reward": null,
-                "creation_time": 1711064957.560262,
-                "auxillary_file_paths": [
-                    "results\\ppo\\BlockerBall\\BlockerBall-82873.pt"
-                ]
-            },
-            {
-                "steps": 98873,
-                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-98873.onnx",
-                "reward": null,
-                "creation_time": 1711065544.854079,
-                "auxillary_file_paths": [
-                    "results\\ppo\\BlockerBall\\BlockerBall-98873.pt"
+                    "results\\ppo\\BlockerBall\\BlockerBall-500009.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 98873,
+            "steps": 500009,
             "file_path": "results\\ppo\\BlockerBall.onnx",
-            "reward": null,
-            "creation_time": 1711065544.854079,
+            "reward": 0.8624999998137355,
+            "creation_time": 1711096377.3327475,
             "auxillary_file_paths": [
-                "results\\ppo\\BlockerBall\\BlockerBall-98873.pt"
+                "results\\ppo\\BlockerBall\\BlockerBall-500009.pt"
             ]
         }
     },

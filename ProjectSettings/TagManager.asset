@@ -12,6 +12,7 @@ TagManager:
   - SpawnBalls
   - FrontWall
   - SecondWall
+  - Floor
   layers:
   - Default
   - TransparentFX
