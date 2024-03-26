@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement; 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuCanvas;
+    public GameObject mainCanvas; 
     public InputField playerNameInput;
 
     private bool isPaused = false;
@@ -38,6 +39,7 @@ public class PauseMenu : MonoBehaviour
 
         // Show the pause menu canvas
         pauseMenuCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
     }
 
     public void ResumeGame()
@@ -48,12 +50,18 @@ public class PauseMenu : MonoBehaviour
 
         // Hide the pause menu canvas
         pauseMenuCanvas.SetActive(false);
+        mainCanvas.SetActive(true); 
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+    }
     public void QuitGame()
     {
         // Quit the application (for development purposes)
         UnityEngine.Application.Quit(); // Specify UnityEngine.Application
+        Application.Quit(); 
     }
 
     public void StartGame()
