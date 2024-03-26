@@ -5,13 +5,15 @@ using UnityEngine.UI;
 using TMPro; 
 public class Timer : MonoBehaviour
 {
+    // Reference: https://www.youtube.com/watch?v=u_n3NEi223E
+
     public float TimeRemaining = 60;
     public bool TimerOn = false;
-
-    public TextMeshProUGUI Timer_Text; 
+    public TextMeshProUGUI TimerNumber; 
     void Start()
     {
         TimerOn = true; 
+
     }
 
     // Update is called once per frame
@@ -31,16 +33,12 @@ public class Timer : MonoBehaviour
                 UnityEngine.Application.Quit();
                 Application.Quit();
             }
+            updateTimer();
         }
     }
 
-    void updateTimer(float currentTime)
+    void updateTimer()
     {
-        currentTime += 1;
-
-        float mintues = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-
-        Timer_Text.text = string.Format("{0:00} : {1:00}", mintues, seconds); 
+        TimerNumber.text = TimeRemaining.ToString("0"); 
     }
 }

@@ -3,16 +3,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuCanvas;
-    public GameObject mainCanvas; 
+    public GameObject pauseMenu;
+    public GameObject mainUI; 
     public InputField playerNameInput;
 
     private bool isPaused = false;
 
     void Start()
     {
-        // Hide the pause menu canvas initially
-        pauseMenuCanvas.SetActive(false);
+        // Hide the pause menu 
+        pauseMenu.SetActive(false);
     }
 
     void Update()
@@ -38,8 +38,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
 
         // Show the pause menu canvas
-        pauseMenuCanvas.SetActive(true);
-        mainCanvas.SetActive(false);
+        pauseMenu.SetActive(true);
+        mainUI.SetActive(false);
     }
 
     public void ResumeGame()
@@ -49,8 +49,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 
         // Hide the pause menu canvas
-        pauseMenuCanvas.SetActive(false);
-        mainCanvas.SetActive(true); 
+        pauseMenu.SetActive(false);
+        mainUI.SetActive(true); 
     }
 
     public void RestartLevel()
