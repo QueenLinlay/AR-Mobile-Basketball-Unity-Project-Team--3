@@ -26,7 +26,7 @@ public class BlockerAgent : Agent
     public override void OnEpisodeBegin()
     {
         // If the Agent fell, zero its momentum
-        if (this.transform.localPosition.y < 0)
+        if (this.transform.localPosition.y < -1.852f)
         {
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
@@ -75,15 +75,10 @@ public class BlockerAgent : Agent
 
         switch (moveY)
         {
-            case 0: forceJump = 5; Jump(); Debug.Log("Force Jump = 5"); break;
-            case 1: forceJump = 6; Jump(); Debug.Log("Force Jump = 6"); break;
-            case 2: forceJump = 7; Jump(); Debug.Log("Force Jump = 7"); break;
-            case 3: forceJump = 8; Jump(); Debug.Log("Force Jump = 8"); break;
-            case 4: forceJump = 9; Jump(); Debug.Log("Force Jump = 9"); break;
-            case 5: forceJump = 10; Jump(); Debug.Log("Force Jump = 10"); break;
-            case 6: forceJump = 11; Jump(); Debug.Log("Force Jump = 11"); break;
-            case 7: forceJump = 12; Jump(); Debug.Log("Force Jump = 12"); break;
-            case 8: forceJump = 13; Jump(); Debug.Log("Force Jump = 13"); break;
+            case 0: Jump(40); Debug.Log("Force Jump = 40"); break;
+            case 1: Jump(50); Debug.Log("Force Jump = 50"); break;
+            case 2: Jump(60); Debug.Log("Force Jump = 60"); break;
+            case 3: Jump(70); Debug.Log("Force Jump = 70"); break;
         }
 
         //Speed
@@ -97,6 +92,11 @@ public class BlockerAgent : Agent
         if (distanceToTarget < 0.42f)
         {
             AddReward(0.5f);
+            EndEpisode();
+        }
+        else if (distanceToTarget > 1.2f)
+        {
+            AddReward(-0.5f);
             EndEpisode();
         }
         // Fell off platform
@@ -113,7 +113,6 @@ public class BlockerAgent : Agent
         var continuousActionsOut = actionsOut.ContinuousActions;
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
         continuousActionsOut[1] = Input.GetAxis("Vertical");
-
 
     }
 
@@ -145,12 +144,14 @@ public class BlockerAgent : Agent
         }
 
     }
-    void Jump()
+    void Jump(float temp)
     {
         if (jumpIsReady)
         {
+            AddReward(0.1f);
+            forceJump = temp;
             rBody.AddForce(Vector3.up * forceJump, ForceMode.Impulse);
-                jumpIsReady = false;
+            jumpIsReady = false;
         }
     }
 }
