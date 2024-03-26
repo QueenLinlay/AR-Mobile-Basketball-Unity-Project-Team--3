@@ -8,8 +8,9 @@ public class ScoreForRewards : MonoBehaviour
     // Basic GameObject or access to script names
     //public GameObject ball;
     //public SpawnBall spawn;
-   // public GameObject Holder;
-
+    // public GameObject Holder;
+    BlockerAgent Block;
+    GameObject AI;
     // UI Tert GameObjects
     [SerializeField]
     public GameObject ScoreHolder;
@@ -26,6 +27,8 @@ public class ScoreForRewards : MonoBehaviour
         // Making sure we have access to SpawnBall Component for the bool global variable
         //Holder = GameObject.FindWithTag("SpawnBall");
         //spawn = Holder.GetComponent<SpawnBall>();
+        AI = GameObject.FindWithTag("AI");
+        Block = AI.GetComponent<BlockerAgent>();
         ScoreText = ScoreHolder.GetComponent<TextMeshProUGUI>();
     }
     
@@ -40,6 +43,7 @@ public class ScoreForRewards : MonoBehaviour
             //Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
             Score++;
             ScoreText.text = Score.ToString();
+            Block.AddReward(-0.2f);
             Debug.Log("Scored!! AI Failed to block");
             //Debug.Log(Score);
         }

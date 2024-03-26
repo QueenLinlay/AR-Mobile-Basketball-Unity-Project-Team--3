@@ -10,12 +10,16 @@ public class BlockerAgent : Agent
 {
     Rigidbody rBody;
 
+    public float forceMultiplier = 5f;
+    public float forceJump;
+    public bool jumpIsReady;
+
     // Start is called before the first frame update
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
-
         transform.position = new Vector3(2.23861051f, -1.62899995f, 1.52878571f);
+        jumpIsReady = true;
     }
 
     public Transform Target;
@@ -42,10 +46,6 @@ public class BlockerAgent : Agent
         sensor.AddObservation(rBody.velocity.y);
         sensor.AddObservation(rBody.velocity.z);
     }
-
-    public float forceMultiplier = 5f;
-    public float forceJump = 10f;
-    public bool jumpIsReady = true;
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Actions, size = 2
@@ -75,7 +75,15 @@ public class BlockerAgent : Agent
 
         switch (moveY)
         {
-            case 1: Jump();  Debug.Log("Move Y = 1"); break;
+            case 0: forceJump = 5; Jump(); Debug.Log("Force Jump = 5"); break;
+            case 1: forceJump = 6; Jump(); Debug.Log("Force Jump = 6"); break;
+            case 2: forceJump = 7; Jump(); Debug.Log("Force Jump = 7"); break;
+            case 3: forceJump = 8; Jump(); Debug.Log("Force Jump = 8"); break;
+            case 4: forceJump = 9; Jump(); Debug.Log("Force Jump = 9"); break;
+            case 5: forceJump = 10; Jump(); Debug.Log("Force Jump = 10"); break;
+            case 6: forceJump = 11; Jump(); Debug.Log("Force Jump = 11"); break;
+            case 7: forceJump = 12; Jump(); Debug.Log("Force Jump = 12"); break;
+            case 8: forceJump = 13; Jump(); Debug.Log("Force Jump = 13"); break;
         }
 
         //Speed
@@ -84,25 +92,20 @@ public class BlockerAgent : Agent
         // Rewards
         float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
 
-        if (this.transform.localPosition.y > -0.678)
-        {
-            AddReward(-0.1f);
-            EndEpisode();
-        }
 
         // Reached target
         if (distanceToTarget < 0.42f)
         {
-            SetReward(0.2f);
+            AddReward(0.5f);
             EndEpisode();
         }
-
         // Fell off platform
         else if (this.transform.localPosition.y < -5)
         {
+            AddReward(-0.5f);
             EndEpisode();
         }
-
+        
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
