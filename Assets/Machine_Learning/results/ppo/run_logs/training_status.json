@@ -1,0 +1,47 @@
+{
+    "BlockerBall": {
+        "checkpoints": [
+            {
+                "steps": 8876,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-8876.onnx",
+                "reward": -0.4994141505531708,
+                "creation_time": 1711638003.967615,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-8876.pt"
+                ]
+            },
+            {
+                "steps": 16913,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-16913.onnx",
+                "reward": -347.9045704494823,
+                "creation_time": 1711638207.2687948,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-16913.pt"
+                ]
+            },
+            {
+                "steps": 29344,
+                "file_path": "results\\ppo\\BlockerBall\\BlockerBall-29344.onnx",
+                "reward": -505.6750364303589,
+                "creation_time": 1711638498.9867537,
+                "auxillary_file_paths": [
+                    "results\\ppo\\BlockerBall\\BlockerBall-29344.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 29344,
+            "file_path": "results\\ppo\\BlockerBall.onnx",
+            "reward": -505.6750364303589,
+            "creation_time": 1711638498.9867537,
+            "auxillary_file_paths": [
+                "results\\ppo\\BlockerBall\\BlockerBall-29344.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.1+cpu"
+    }
+}

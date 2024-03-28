@@ -89,15 +89,14 @@ public class BlockerAgent : Agent
 
 
         // Reached target
-        if (distanceToTarget < 0.42f)
+        //if (distanceToTarget < 0.42f)
+        //{
+        //    AddReward(0.5f);
+        //    EndEpisode();
+        //}
+        if (distanceToTarget > 1.0f)
         {
-            AddReward(0.5f);
-            EndEpisode();
-        }
-        else if (distanceToTarget > 1.2f)
-        {
-            AddReward(-0.5f);
-            EndEpisode();
+            AddReward(-0.1f);
         }
         // Fell off platform
         else if (this.transform.localPosition.y < -5)
