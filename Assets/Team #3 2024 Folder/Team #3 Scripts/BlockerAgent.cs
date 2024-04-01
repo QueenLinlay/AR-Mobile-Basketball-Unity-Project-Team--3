@@ -25,6 +25,7 @@ public class BlockerAgent : Agent
         jumpIsReady = true;
     }
     public GameObject Target;
+    public GameObject MainSpawnTarget;
     public override void OnEpisodeBegin()
     {
 
@@ -130,20 +131,32 @@ public class BlockerAgent : Agent
             AllowToJump = false;
         }
 
-        // Reached target
-        //if (distanceToTarget < 0.30f)
-        //{
-            //AddReward(0.1f);
-           // EndEpisode();
-        //}
-        if (distanceToTarget > 0.0f)
+        if (this.transform.localPosition.z > MainSpawnTarget.transform.localPosition.z || this.transform.localPosition.z < MainSpawnTarget.transform.localPosition.z)
         {
-            AddReward(-0.5f);
+            AddReward(-0.1f);
+        }
+
+        if (this.transform.localPosition.x > MainSpawnTarget.transform.localPosition.x || this.transform.localPosition.x < MainSpawnTarget.transform.localPosition.x)
+        {
+            AddReward(-0.1f);
+        }
+
+
+            // Reached target
+            //if (distanceToTarget < 0.30f)
+            //{
+            //AddReward(0.1f);
+            // EndEpisode();
+            //}
+
+            if (distanceToTarget > 0.0f)
+        {
+            AddReward(-0.1f);
         }
         // Fell off platform
         else if (this.transform.localPosition.y < -5)
         {
-            AddReward(-0.5f);
+            AddReward(-1f);
             EndEpisode();
         }
         

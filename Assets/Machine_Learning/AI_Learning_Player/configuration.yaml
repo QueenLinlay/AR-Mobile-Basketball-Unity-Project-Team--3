@@ -14,7 +14,7 @@ behaviors:
       learning_rate_schedule: linear
       beta_schedule: linear
       epsilon_schedule: linear
-    checkpoint_interval: 1250000
+    checkpoint_interval: 250000
     network_settings:
       normalize: false
       hidden_units: 128
