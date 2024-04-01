@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; 
+using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     // Reference: https://www.youtube.com/watch?v=u_n3NEi223E
@@ -30,8 +31,9 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time is UP!");
                 TimeRemaining = 0;
                 TimerOn = false;
-                UnityEngine.Application.Quit();
-                Application.Quit();
+                SceneManager.LoadScene(sceneBuildIndex:0);
+                //UnityEngine.Application.Quit();
+                //Application.Quit();
             }
             updateTimer();
         }

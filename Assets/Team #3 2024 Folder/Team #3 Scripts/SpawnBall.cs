@@ -26,6 +26,11 @@ public class SpawnBall : MonoBehaviour
         ResetTimer();
     }
 
+    //private void OnEnable()
+    //{
+    //    Check = true;
+    //}
+
     public void Spawn()
     {
         Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
