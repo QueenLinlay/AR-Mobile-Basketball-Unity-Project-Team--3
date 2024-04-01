@@ -10,6 +10,13 @@ TagManager:
   - Trails
   - SpawnBall
   - SpawnBalls
+  - FrontWall
+  - SecondWall
+  - Floor
+  - AI
+  - TopWall
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX
