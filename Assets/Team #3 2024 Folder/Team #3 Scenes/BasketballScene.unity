@@ -449,6 +449,38 @@ MonoBehaviour:
   TimeRemaining: 60
   TimerOn: 0
   TimerNumber: {fileID: 7432123887677083988}
+--- !u!1 &1794219581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794219582}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794219582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794219581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0554613, y: -2.363185, z: 4.309748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1870272192643966324}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876300085
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +521,6 @@ Transform:
   - {fileID: 543450652221274043}
   - {fileID: 692988392324329242}
   - {fileID: 1602379771868578887}
-  - {fileID: 166665378300381133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &22931813219561787
@@ -819,11 +850,11 @@ Transform:
   m_GameObject: {fileID: 6812817413830058006}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.525905, y: 0.2826432, z: 3.819725}
-  m_LocalScale: {x: 0.07879968, y: 0.05045728, z: 0.08327662}
+  m_LocalPosition: {x: 0.08105993, y: 0.4460001, z: 2.283}
+  m_LocalScale: {x: 0.07879969, y: 0.050457284, z: 0.08327662}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1876300086}
+  m_Father: {fileID: 6352471688443821913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &166791361391754343
 Transform:
@@ -3931,7 +3962,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1635586733}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1794219582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12191,6 +12222,7 @@ Transform:
   - {fileID: 856536559857977257}
   - {fileID: 5546131880108788479}
   - {fileID: 8866397341975466108}
+  - {fileID: 166665378300381133}
   m_Father: {fileID: 485909150318156748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6362942607659565611
@@ -12896,7 +12928,7 @@ GameObject:
   - component: {fileID: 7299739287199914044}
   - component: {fileID: 4934463857356104112}
   m_Layer: 0
-  m_Name: ScoreCollider (1)
+  m_Name: ScoreColliderForAITraining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16387,7 +16419,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 0da4a8bddea23b24fa9667cdbf2c9942, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: AI_Training_Player
@@ -17801,4 +17833,4 @@ SceneRoots:
   - {fileID: 659421280}
   - {fileID: 6206944045800187766}
   - {fileID: 485909150318156748}
-  - {fileID: 1870272192643966324}
+  - {fileID: 1794219582}
