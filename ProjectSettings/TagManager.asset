@@ -14,6 +14,9 @@ TagManager:
   - SecondWall
   - Floor
   - AI
+  - TopWall
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX

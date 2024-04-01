@@ -11,9 +11,12 @@ public class AutoShoot : MonoBehaviour
     public bool Shooting = false;
     public GameObject RewardBall;
     public int Deleteball = 0;
+    public bool Alow = true;
     //public Transform ShootPosition;
+    public float StartRandomSpeed;
+    public float EndRandomSpeed;
+    public float randomSpeed;
     public float LaunchSpeed;
-    public float UpwardsSpeed = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,15 @@ public class AutoShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Alow)
+        {
+            randomSpeed = Random.Range(StartRandomSpeed, EndRandomSpeed);
+        }
+        else
+        {
+            randomSpeed = LaunchSpeed;
+        }
+
         if (TimerDone)
         {
             if (TimeCountDown > 0)
@@ -45,7 +57,7 @@ public class AutoShoot : MonoBehaviour
     {
         GameObject ball = Instantiate(RewardBall, transform.position, transform.rotation);
         //ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(UpwardsSpeed, LaunchSpeed, 0));
-        ball.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * LaunchSpeed);
+        ball.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * randomSpeed);
         Destroy(ball, Deleteball);
     }
 }

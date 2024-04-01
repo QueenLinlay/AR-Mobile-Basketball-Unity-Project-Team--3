@@ -13,6 +13,9 @@ public class BlockerAgent : Agent
     public float forceMultiplier = 5f;
     public float forceJump;
     public bool jumpIsReady;
+    public bool AllowToJump;
+
+    public float fallMutiplier = 2.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +24,10 @@ public class BlockerAgent : Agent
         transform.position = new Vector3(2.23861051f, -1.62899995f, 1.52878571f);
         jumpIsReady = true;
     }
-
-    public Transform Target;
+    public GameObject Target;
     public override void OnEpisodeBegin()
     {
+
         // If the Agent fell, zero its momentum
         if (this.transform.localPosition.y < -1.852f)
         {
@@ -32,13 +35,29 @@ public class BlockerAgent : Agent
             this.rBody.velocity = Vector3.zero;
             this.transform.localPosition = new Vector3(2.23861051f, -1.62899995f, 1.52878571f);
         }
-
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         // Target and Agent positions
-        sensor.AddObservation(Target.localPosition);
+        Target = GameObject.FindWithTag("Basketball");
+
+        Debug.Log("Target Local Position z");
+        Debug.Log(Target.transform.localPosition.z);
+
+        if (rBody.velocity.y < 0)
+        {
+            rBody.velocity += Vector3.up * Physics.gravity.y * (fallMutiplier - 1) * Time.deltaTime;
+        }
+
+       // Debug.Log("Distance To Target");
+       // Debug.Log(distanceToTarget);
+       // Debug.Log("localPosition of this AI");
+       // Debug.Log(this.transform.localPosition);
+       // Debug.Log("localPosition of Target");
+       // Debug.Log(Target.transform.localPosition);
+
+        sensor.AddObservation(Target.transform.localPosition);
         sensor.AddObservation(this.transform.localPosition);
 
         //Agent velocity
@@ -59,18 +78,29 @@ public class BlockerAgent : Agent
         //rBody.AddForce(controlSignal * forceMultiplier);
         Vector3 addForce = new Vector3(0, 0, 0);
 
-        switch (moveX)
-        {
-            case 0: addForce.x = 0f; break;
-            case 1: addForce.x = -0.5f; break;
-            case 2: addForce.x = +0.5f; break;
-        }
+        // Rewards
+        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.transform.localPosition);
 
-        switch (moveZ)
+        Debug.Log("Distance To Target");
+        Debug.Log(distanceToTarget);
+
+        if (this.transform.localPosition.y < -1.4f && distanceToTarget > 0.0f)
         {
-            case 0: addForce.z = 0f; break;
-            case 1: addForce.z = -0.5f; break;
-            case 2: addForce.z = +0.5f; break;
+            Debug.Log("Is moving X");
+            switch (moveX)
+            {
+                
+                case 0: addForce.x = 0f; break;
+                case 1: addForce.x = -0.5f; break;
+                case 2: addForce.x = +0.5f; break;
+            }
+            Debug.Log("Is moving Z");
+            switch (moveZ)
+            {
+                case 0: addForce.z = 0f; break;
+                case 1: addForce.z = -0.5f; break;
+                case 2: addForce.z = +0.5f; break;
+            }
         }
 
         switch (moveY)
@@ -84,20 +114,31 @@ public class BlockerAgent : Agent
         //Speed
         rBody.velocity = addForce * forceMultiplier;
 
-        // Rewards
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
 
+
+
+
+
+        if (Target.transform.localPosition.z > 1.0f)
+        {
+            AddReward(0.1f);
+            AllowToJump = true;
+        }
+        else
+        {
+            //AddReward(0.1f);
+            AllowToJump = false;
+        }
 
         // Reached target
-        if (distanceToTarget < 0.42f)
-        {
-            AddReward(0.5f);
-            EndEpisode();
-        }
-        else if (distanceToTarget > 1.2f)
+        //if (distanceToTarget < 0.30f)
+        //{
+            //AddReward(0.1f);
+           // EndEpisode();
+        //}
+        if (distanceToTarget > 0.0f)
         {
             AddReward(-0.5f);
-            EndEpisode();
         }
         // Fell off platform
         else if (this.transform.localPosition.y < -5)
@@ -135,18 +176,19 @@ public class BlockerAgent : Agent
             EndEpisode();
             //Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
-        else
+        
+        if(collision.gameObject.tag == "TopWall" || collision.gameObject.tag == "RightWall" || collision.gameObject.tag == "LeftWall")
         {
-
-            Debug.Log("AI GameObject has collide with other GameObject... will not destroy them..");
-            //AddReward(-0.1f);
-            //EndEpisode();
+            Debug.Log("collide with either Top, Right, Left Wall");
+            AddReward(-1.0f);
+            EndEpisode();
         }
+
 
     }
     void Jump(float temp)
     {
-        if (jumpIsReady)
+        if (jumpIsReady && AllowToJump)
         {
             AddReward(0.1f);
             forceJump = temp;
