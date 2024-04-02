@@ -108,8 +108,8 @@ public class BlockerAgent : Agent
         {
             case 0: Jump(40); Debug.Log("Force Jump = 40"); break;
             case 1: Jump(50); Debug.Log("Force Jump = 50"); break;
-            case 2: Jump(60); Debug.Log("Force Jump = 60"); break;
-            case 3: Jump(70); Debug.Log("Force Jump = 70"); break;
+            case 2: Jump(55); Debug.Log("Force Jump = 55"); break;
+            case 3: Jump(60); Debug.Log("Force Jump = 60"); break;
         }
 
         //Speed
@@ -122,7 +122,6 @@ public class BlockerAgent : Agent
 
         if (Target.transform.localPosition.z > 1.0f)
         {
-            AddReward(0.1f);
             AllowToJump = true;
         }
         else
@@ -133,12 +132,14 @@ public class BlockerAgent : Agent
 
         if (this.transform.localPosition.z > MainSpawnTarget.transform.localPosition.z || this.transform.localPosition.z < MainSpawnTarget.transform.localPosition.z)
         {
-            AddReward(-0.1f);
+            AddReward(-1f);
+            EndEpisode();
         }
 
         if (this.transform.localPosition.x > MainSpawnTarget.transform.localPosition.x || this.transform.localPosition.x < MainSpawnTarget.transform.localPosition.x)
         {
-            AddReward(-0.1f);
+            AddReward(-1f);
+            EndEpisode();
         }
 
 
@@ -185,6 +186,7 @@ public class BlockerAgent : Agent
             //spawn.Check = false;
             Destroy(collision.gameObject);
             Debug.Log("AI Collide with BasketBall Reward");
+            rBody.velocity = new Vector3 (0.0f, rBody.velocity.y, 0.0f);
             AddReward(1.0f);
             EndEpisode();
             //Instantiate(ball, new Vector3(0f, 1f, 0f), Quaternion.identity);
