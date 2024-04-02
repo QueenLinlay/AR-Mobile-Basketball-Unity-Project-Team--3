@@ -39,7 +39,7 @@ public class MenuScript : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(sceneBuildIndex: 2);
+        SceneManager.LoadScene(sceneBuildIndex: 1);
     }
 
     public void QuitGame()

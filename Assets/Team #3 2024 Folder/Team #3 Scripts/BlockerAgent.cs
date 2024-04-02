@@ -120,7 +120,7 @@ public class BlockerAgent : Agent
 
 
 
-        if (Target.transform.localPosition.z > 1.0f)
+        if (Target.transform.localPosition.z > 1.7f)
         {
             AllowToJump = true;
         }

@@ -185,11 +185,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Team #3 2024 Folder/Team #3 Scenes/MetaMenu.unity
     guid: 8831527056570264297ac5fd586f78e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team #3 2024 Folder/Team #3 Scenes/BasketballScene.unity
     guid: 890fa2958ef023a438b30906e304e3d7
   - enabled: 1
-    path: Assets/Team #3 2024 Folder/Team #3 Scenes/BasicImageTracking/BasicImageTracking.unity
+    path: Assets/Team #3 2024 Folder/Team #3 Scenes/BasicImageTracking/BasicImageTrackingT.unity
     guid: cdda7d406ba2a3245a78df9a72c2c324
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: c52d3bb36b4c86f47af54ab9c7a02589,
